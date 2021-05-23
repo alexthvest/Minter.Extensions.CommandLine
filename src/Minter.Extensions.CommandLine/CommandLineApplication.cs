@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Minter.Extensions.CommandLine.HelpText;
 
@@ -6,56 +7,107 @@ namespace Minter.Extensions.CommandLine
 {
     public class CommandLineApplication
     {
+        private readonly List<CommandLineApplication> _commands = new();
+        private readonly List<CommandLineOption> _options = new();
+
+        private Action? _action;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Name { get; init; } = AppDomain.CurrentDomain.FriendlyName;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string Description { get; init; } = string.Empty;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public Version Version { get; init; } = new ("1.0.0");
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IHelpMessageGenerator HelpMessageGenerator { get; init; } = new HelpMessageGenerator();
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public IReadOnlyCollection<CommandLineApplication> Commands => _commands;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public IReadOnlyCollection<CommandLineOption> Options => _options;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="description"></param>
+        /// <param name="builder"></param>
+        public void Command(string name, string description, Action<CommandLineApplication> builder)
+        {
+            var command = new CommandLineApplication()
+            {
+                Name = name,
+                Description = description,
+                Version = Version,
+                HelpMessageGenerator = HelpMessageGenerator
+            };
+
+            builder.Invoke(command);
+
+            _commands.Add(command);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="template"></param>
+        /// <param name="description"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void Option(string template, string description)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="action"></param>
+        public void OnExecute(Action action)
+        {
+            _action = action;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void ShowHelp()
+        {
+            HelpMessageGenerator.GenerateHelpMessage(this, Console.Out);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="args"></param>
         public void Execute(string[] args)
         {
+            if (args.Length == 0)
+            {
+                _action?.Invoke();
+                return;
+            }
+            
             if (args.Contains("-v"))
             {
                 Console.WriteLine(Version);
+                return;
             }
         }
-
-        public void ShowHelp()
-        {
-            var options = new[]
-            {
-                new CommandLineOption
-                {
-                    ShortName = "-v",
-                    LongName = "--version",
-                    Description = "output the current version"
-                },
-                new CommandLineOption
-                {
-                    ShortName = "-h",
-                    LongName = "--help",
-                    Description = "display help for command"
-                },
-                new CommandLineOption
-                {
-                    ShortName = "-t",
-                    LongName = "--time",
-                    Description = "display current time"
-                }
-            };
-
-            HelpMessageGenerator.GenerateHelpMessage(this, options, Console.Out);
-        }
-
-        public string Name { get; init; } = AppDomain.CurrentDomain.FriendlyName;
-
-        public string Description { get; init; } = string.Empty;
-
-        public Version Version { get; init; } = new ("1.0.0");
-
-        public IHelpMessageGenerator HelpMessageGenerator { get; init; } = new HelpMessageGenerator();
-    }
-    
-    public class CommandLineOption
-    {
-        public string ShortName { get; init; }
-        
-        public string LongName { get; init; }
-        
-        public string Description { get; init; }
     }
 }

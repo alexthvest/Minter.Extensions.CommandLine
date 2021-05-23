@@ -4,6 +4,11 @@ namespace Minter.Extensions.CommandLine.HelpText
 {
     public interface IHelpMessageGenerator
     {
-        void GenerateHelpMessage(CommandLineApplication application, CommandLineOption[] options, TextWriter writer);
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <param name="writer"></param>
+        void GenerateHelpMessage(CommandLineApplication command, TextWriter writer);
     }
 }
