@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A681227E-234
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Minter.Extensions.CommandLine", "src\Minter.Extensions.CommandLine\Minter.Extensions.CommandLine.csproj", "{76B02F71-5714-433A-B079-6343D9CB1105}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "examples", "examples", "{C145FA3D-2C7F-41BC-B46B-4D8F7149F16F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "examples\HelloWorld\HelloWorld.csproj", "{F9879EFE-A73E-4905-A5D1-DD68106FAD60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,8 +36,21 @@ Global
 		{76B02F71-5714-433A-B079-6343D9CB1105}.Release|x64.Build.0 = Release|Any CPU
 		{76B02F71-5714-433A-B079-6343D9CB1105}.Release|x86.ActiveCfg = Release|Any CPU
 		{76B02F71-5714-433A-B079-6343D9CB1105}.Release|x86.Build.0 = Release|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Debug|x64.Build.0 = Debug|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Debug|x86.Build.0 = Debug|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Release|x64.ActiveCfg = Release|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Release|x64.Build.0 = Release|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Release|x86.ActiveCfg = Release|Any CPU
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{76B02F71-5714-433A-B079-6343D9CB1105} = {A681227E-2348-4A91-90DF-2101A1627698}
+		{F9879EFE-A73E-4905-A5D1-DD68106FAD60} = {C145FA3D-2C7F-41BC-B46B-4D8F7149F16F}
 	EndGlobalSection
 EndGlobal

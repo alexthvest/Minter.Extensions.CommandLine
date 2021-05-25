@@ -30,7 +30,7 @@ namespace Minter.Extensions.CommandLine
         /// <summary>
         /// 
         /// </summary>
-        public IHelpMessageGenerator HelpMessageGenerator { get; init; } = new HelpMessageGenerator();
+        public IHelpTextTemplate HelpTextTemplate { get; init; } = new HelpTextTemplate();
 
         /// <summary>
         /// 
@@ -55,7 +55,7 @@ namespace Minter.Extensions.CommandLine
                 Name = name,
                 Description = description,
                 Version = Version,
-                HelpMessageGenerator = HelpMessageGenerator
+                HelpTextTemplate = HelpTextTemplate
             };
 
             builder.Invoke(command);
@@ -88,7 +88,7 @@ namespace Minter.Extensions.CommandLine
         /// </summary>
         public void ShowHelp()
         {
-            HelpMessageGenerator.GenerateHelpMessage(this, Console.Out);
+            HelpTextTemplate.Write(this, Console.Out);
         }
 
         /// <summary>
