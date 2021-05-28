@@ -23,7 +23,7 @@ namespace Minter.Extensions.CommandLine.HelpText
             _commands = commands;
         }
         
-        public void Write(CommandLineApplication command, TextWriter writer)
+        public void Write(CommandLineCommand command, TextWriter writer)
         {
             _header?.Write(command, writer);
             _options?.Write(command, writer);

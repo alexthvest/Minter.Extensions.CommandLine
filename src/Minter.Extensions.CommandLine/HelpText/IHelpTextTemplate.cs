@@ -4,6 +4,6 @@ namespace Minter.Extensions.CommandLine.HelpText
 {
     public interface IHelpTextTemplate
     {
-        void Write(CommandLineApplication command, TextWriter writer);
+        void Write(CommandLineCommand command, TextWriter writer);
     }
 }

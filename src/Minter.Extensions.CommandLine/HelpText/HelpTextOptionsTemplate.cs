@@ -11,7 +11,7 @@ namespace Minter.Extensions.CommandLine.HelpText
             _seperator = seperator;
         }
         
-        public void Write(CommandLineApplication command, TextWriter writer)
+        public void Write(CommandLineCommand command, TextWriter writer)
         {
             if (command.Options.Count > 0)
             {

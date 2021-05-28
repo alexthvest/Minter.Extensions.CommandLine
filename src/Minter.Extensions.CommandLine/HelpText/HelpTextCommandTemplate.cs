@@ -4,7 +4,7 @@ namespace Minter.Extensions.CommandLine.HelpText
 {
     public class HelpTextCommandTemplate : IHelpTextTemplate
     {
-        public void Write(CommandLineApplication command, TextWriter writer)
+        public void Write(CommandLineCommand command, TextWriter writer)
         {
             if (command.Commands.Count > 0)
             {
