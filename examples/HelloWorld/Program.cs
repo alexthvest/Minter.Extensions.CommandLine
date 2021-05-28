@@ -1,9 +1,9 @@
 ﻿using System;
 using Minter.Extensions.CommandLine;
 
-var program = new CommandLineProgram(
-    "minter", 
-    "Minter Server CLI tool", 
-    new Version(0, 0, 1));
-
-return program.Execute(args);
+return new CommandLineProgramBuilder()
+    .SetName("minter")
+    .SetDescription("Minter Server CLI tool")
+    .SetVersion(new Version(0, 0, 1))
+    .Build()
+    .Execute(args);
